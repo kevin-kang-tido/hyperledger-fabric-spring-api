@@ -1,0 +1,34 @@
+[
+  {
+    "invoke": "InitLedger",
+    "args": []
+  },
+  {
+    "query": "GetAllAssets",
+    "args": []
+  },
+  // id string,
+  // color string,
+  // size int,
+  // owner string,
+  // appraisedValue int
+  {
+    "invoke": "CreateAsset",
+    "args": ["asset100", "orange", 500, "jamesbond", 1000]
+  }
+  , 
+  {
+    "invoke": "TransferAsset",
+    "args": ["asset100", "Michel" ]
+  }
+  ,
+  // get the asset history  
+  {
+    "query": "GetAssetHistory",
+    "args": ["asset100"]
+  },
+  {
+    "query": "ReadAsset",
+    "args": ["asset100"]
+  }
+]

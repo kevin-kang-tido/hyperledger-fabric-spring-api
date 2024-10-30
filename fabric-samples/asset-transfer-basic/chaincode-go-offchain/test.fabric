@@ -1,0 +1,66 @@
+[
+  {
+    "invoke": "InitLedger"
+  },
+  {
+    "query": "GetAllOwners"
+  },
+
+  {
+    "invoke": "CreateOwner",
+    "args": ["74e22631-22c5-4b92-8cd2-133e280ca94e", "Byzantina", ""]
+  },
+  {
+    "query": "GetOwner",
+    "args": ["74e22631-22c5-4b92-8cd2-133e280ca94e"]
+  },
+  {
+    "invoke": "OwnerExists",
+    "args": ["74e22631-22c5-4b92-8cd2-133e280ca94e"]
+  },
+  {
+    "query": "GetAllAssets"
+  },
+  // assetId, ownerId
+  {
+    "invoke": "TransferAsset",
+    "args": ["asset1", 
+    "74e22631-22c5-4b92-8cd2-133e280ca94e"]
+  },
+  {
+    "query": "GetAssetHistory",
+    "args": ["asset1"]
+  },
+  {
+    "query": "ReadAsset",
+    "args": ["asset1"]
+  },
+  // id string,
+  // color string,
+  // size int,
+  // ownerId string,
+  // appraisedValue int,
+  // offChainDataID string
+  {
+    "invoke": "CreateAsset",
+    "args": [
+      "asset3",
+      "blue",
+      "71",
+      "74e22631-22c5-4b92-8cd2-133e280ca94e",
+      "220",
+      ""
+    ]
+  },
+  {
+    "invoke": "CreateAsset",
+    "args": [
+      "asset2",
+      "yellow",
+      "79",
+      "74e22631-22c5-4b92-8cd2-133e280ca94e",
+      "220",
+      ""
+    ]
+  }
+]

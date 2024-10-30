@@ -1,0 +1,14 @@
+server: 
+    port: 8181 
+spring:
+    application:
+        name: api-hyperledger-fabric-spring
+
+
+# configuration about the network that we are working with 
+fabric: 
+    channel-name: "mychannel"
+    chaincode-name: "basic"
+    mspId: "Org1MSP"
+    peer-endpoint: "localhost:7051"
+    override-auth: "peer0.org1.example.com"
