@@ -1,4 +1,12 @@
 package anuznomii.lol.apihyperledgerfabricspring.dto;
 
-public class AssetRequest {
+public record AssetRequest(
+        String Color,
+        String Owner,
+        String Size,
+        Integer AppraisedValue
+
+
+){
+
 }

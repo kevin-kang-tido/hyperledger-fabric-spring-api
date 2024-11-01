@@ -1,13 +1,10 @@
 package anuznomii.lol.apihyperledgerfabricspring.restcontrollers;
 
+import anuznomii.lol.apihyperledgerfabricspring.dto.AssetRequest;
 import org.checkerframework.common.reflection.qual.GetClass;
 import org.hyperledger.fabric.client.GatewayException;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import anuznomii.lol.apihyperledgerfabricspring.services.ChaincodeService;
 import lombok.RequiredArgsConstructor;
 
@@ -29,4 +26,32 @@ public class AssetRestController {
     public ResponseEntity<String> getAllAssets() throws GatewayException {
         return ResponseEntity.ok(chaincodeService.getAllAssets());
     }
+    //   // get assetBYID
+
+    @GetMapping("/{assetId}")
+    public String readAsset(@PathVariable String assetId) throws Exception {
+        return chaincodeService.readAsset(assetId);
+    }
+
+
+    // create  a new asset to ledger
+    @PostMapping("/create")
+    String createAsset(@RequestBody AssetRequest assetRequest) throws Exception {
+        return chaincodeService.createAsset(assetRequest);
+    }
+    // update
+    @PutMapping("/update/{assetId}")
+    public String updateAsset(@PathVariable String assetId, @RequestBody AssetRequest assetRequest) throws  Exception{
+        return chaincodeService.updateAsset( assetId,assetRequest);
+    }
+
+    // delete
+    @DeleteMapping("{assetId}")
+    public String deleteAsset(@PathVariable String assetId) throws  Exception{
+        return chaincodeService.deleteAsset(assetId);
+    }
+
+
+
+
 }
