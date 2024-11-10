@@ -5,13 +5,26 @@ spring:
         name: api-hyperledger-fabric-spring
 
 
-# configuration about the network that we are working with 
+# configuration about the network that we are working with
 fabric:
-    network:
-        channel: mychannel
-        discovery: true # enable the service-discover in fabric (allow client(application) to connect with fabric)
-        # this is the connection to our fabric file path
-        config-path:
+  wallet:
+    config-path: wallets
+  network:
+    channel: mychannel
+    discovery: true # enable the service-discover in fabric (allow client(application) to connect with fabric)
+    # this is the connection to our fabric file path
+    config-path: ./fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/connection-org1.json
+  ca:
+    # default admin credential for each organization
+    admin:
+      username: admin
+      password: adminpw
+    org1:
+      name: Org1
+      mspId: Org1MSP
+      caUrl: "https://localhost:7054"
+      certificatePath: ./fabric-samples/test-network/organizations/fabric-ca/org1/ca-cert.pem
+    tls:
+      enabled: true
 
 
-    ca:
