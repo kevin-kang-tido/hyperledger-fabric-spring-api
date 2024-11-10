@@ -6,7 +6,7 @@ public record AssetRequest(
         String Size,
         Integer AppraisedValue
 
-
 ){
+
 
 }

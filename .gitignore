@@ -35,3 +35,10 @@ out/
 
 ### VS Code ###
 .vscode/
+
+# ignore some of the fabric properties
+fabric-samples/bin
+fabric-samples/config
+fabric-samples/builders
+fabric-samples/test-network/organizations/peerOrganizations/
+fabric-samples/test-network/organizations/ordererOrganizations/

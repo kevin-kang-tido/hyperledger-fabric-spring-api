@@ -1,0 +1,8 @@
+network-up:
+   echo "Bring the network up "
+   ./network.sh down
+   ./network.sh up
+
+newtwork-down:
+     echo "Bring the network down! "
+     ./network.sh down

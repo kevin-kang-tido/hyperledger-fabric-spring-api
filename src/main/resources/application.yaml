@@ -6,9 +6,12 @@ spring:
 
 
 # configuration about the network that we are working with 
-fabric: 
-    channel-name: "mychannel"
-    chaincode-name: "basic"
-    mspId: "Org1MSP"
-    peer-endpoint: "localhost:7051"
-    override-auth: "peer0.org1.example.com"
+fabric:
+    network:
+        channel: mychannel
+        discovery: true # enable the service-discover in fabric (allow client(application) to connect with fabric)
+        # this is the connection to our fabric file path
+        config-path:
+
+
+    ca:
