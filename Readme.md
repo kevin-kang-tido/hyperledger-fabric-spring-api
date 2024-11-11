@@ -22,3 +22,23 @@ http Delete :8181/api/v1/assets/asset6
 
 ```
 
+```
+### NEW NEW CODE CHANE DEPENDENCY 
+## Hyperledger Fabric interact with spring boot 🚀🚀🚀
+    // add new to dependencies fabric-gateway-java
+    implementation 'org.hyperledger.fabric:fabric-gateway-java:2.2.9'
+    
+
+*** 
+### Interacting with the deploychaincode API
+```bash
+http POST :8181/api/v1/chaincode/basic/InitLedger/invoke 
+http :8181/api/v1/chaincode/basic/GetAllAssets/query
+```
+
+*** 
+* Unable to solve the DNS name inside the network connection profile
+
+
+```
+

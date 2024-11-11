@@ -1,4 +1,4 @@
-# This is a sample Python script.
+# This is a sample Python scripts.
 
 # Press ⌃R to execute it or replace it with your code.
 # Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
@@ -90,7 +90,7 @@ def update_config(config_path: str, updated_config_path: str, address: str, iden
     with open(updated_config_path, 'w') as f:
         json.dump(config, f)
 
-# Press the green button in the gutter to run the script.
+# Press the green button in the gutter to run the scripts.
 if __name__ == '__main__':
     args = parse_args()
     update_config(args.config_path, args.updated_config_path, args.address, args.identity, args.server_cert, args.client_cert)

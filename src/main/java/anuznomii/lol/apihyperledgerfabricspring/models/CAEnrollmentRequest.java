@@ -20,7 +20,7 @@ public class CAEnrollmentRequest {
     private  String affliation; // org1 == live which department
     private  String orgName;
     private  String registrarUsername;
-    private  String type; // type : client | user | admin
+    private  String type; // type : orderer | client | admin
     @Builder .Default
     private  Boolean genSecret = true;
 

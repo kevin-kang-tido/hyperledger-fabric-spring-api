@@ -5,7 +5,7 @@ network option:
         echo "Bring the test-nework up 🚀🚀🚀"
         cd fabric-samples/test-network && ./network.sh down && ./network.sh up createChannel -ca
         echo "Deploy the chainCode. 🚀🚀🚀🚀🚀🚀"
-        ./network.sh deployCC
+         bash network.sh deployCC
         ;;
      "down")
      echo "Bring the test-network down 🔥🔥🔥"
@@ -20,7 +20,7 @@ utils option:
   case {{option}} in
   "binary")
     echo "Installing the Binaries 🚀🚀🚀"
-     ./script/installFabricBinaries.sh
+     ./scripts/installFabricBinaries.sh
     ;;
   "*")
     echo "Invalid Command, Please Check it again! 🔥🔥🔥"

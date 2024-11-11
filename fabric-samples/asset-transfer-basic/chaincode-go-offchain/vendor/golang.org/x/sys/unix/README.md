@@ -135,7 +135,7 @@ some `#if/#elif` macros in your include statements.
 
 ### mkerrors.sh
 
-This script is used to generate the system's various constants. This doesn't
+This scripts is used to generate the system's various constants. This doesn't
 just include the error numbers and error strings, but also the signal numbers
 and a wide variety of miscellaneous constants. The constants come from the list
 of include files in the `includes_${uname}` variable. A regex then picks out

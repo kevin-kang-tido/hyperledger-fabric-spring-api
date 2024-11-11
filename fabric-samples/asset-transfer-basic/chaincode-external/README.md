@@ -77,7 +77,7 @@ We are now ready to deploy the external chaincode.
 
 ## Installing the external chaincode
 
-We can't use the test network script to install an external chaincode so we will have to do a bit more work. However, we can still leverage part of the test-network scripts to make this easier.
+We can't use the test network scripts to install an external chaincode so we will have to do a bit more work. However, we can still leverage part of the test-network scripts to make this easier.
 
 From the `test-network` directory, set the following environment variables to use the Fabric binaries:
 
@@ -86,7 +86,7 @@ export PATH=${PWD}/../bin:$PATH
 export FABRIC_CFG_PATH=$PWD/../config/
 ```
 
-Run the following command to import functions from the `envVar.sh` script into your terminal. These functions allow you to act as either test network organization.
+Run the following command to import functions from the `envVar.sh` scripts into your terminal. These functions allow you to act as either test network organization.
 
 ```
 . ./scripts/envVar.sh

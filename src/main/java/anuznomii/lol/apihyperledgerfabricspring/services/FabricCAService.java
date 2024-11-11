@@ -1,6 +1,7 @@
 package anuznomii.lol.apihyperledgerfabricspring.services;
 
 import anuznomii.lol.apihyperledgerfabricspring.models.CAEnrollmentRequest;
+import anuznomii.lol.apihyperledgerfabricspring.utils.FabricUtils;
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
 import org.hyperledger.fabric.gateway.Identities;
@@ -43,7 +44,6 @@ public class FabricCAService {
     private Wallet wallet;
     @Value("${fabric.wallet.config-path}")
     private  String walletPath;
-
     @Value("${fabric.ca.tls.enabled}")
     private Boolean tlsEnabled;
 
@@ -62,43 +62,42 @@ public class FabricCAService {
                 Paths.get(walletPath)
         );
 
+        // checking the Identities is existence or not
+        if(FabricUtils.checkIdentityExistence("admin",wallet)){
+            log.info("Admin already exist in wallet!");
+        }else{
+            log.info("Identity doesn't exit. Check it again! ");
+        }
+
+
         // create user admin
         createAdminUserOrg1();
 
         // create a new user
         CAEnrollmentRequest request = CAEnrollmentRequest.builder()
-                .username("client2")
+                .username("client1")
                 .affliation("org1.department1")
                 .type("client")
                 .secret("user1pw")
                 .registrarUsername("admin")
                 .build();
-
+        // if it is already have ===
         registerAndEnrollUser(request);
 
     }
+
     // register and enrollment for client
     public  void registerAndEnrollUser(CAEnrollmentRequest request) throws  Exception{
 
         // ca client
         var props = new Properties();
-        if (tlsEnabled){
-            // configure the tls properties for the Hyperledger Fabric CA Client
-            // 2.1 configure the tls properties
-            File pemFile = new File(org1CertificatePath);
-            if (!pemFile.exists()){
-                throw new Exception(" Certificate for Org1 CA file doesn't exist");
-            }
-            // verify type of the certificate and also validate the certificate .....
-            props.setProperty("pemFile", org1CertificatePath);
-            props.setProperty("allowAllHostName","true");
 
-            // configure the timeout for each request
-            // 2.2 configure the timeout
-            // 30000 ms === 30 ms
-            props.setProperty("connectTimeout","3000");
-            props.setProperty("readTimeout","30000");
-        }
+        FabricUtils.setTlsProps(
+                props,
+                org1CertificatePath,
+                tlsEnabled
+        );
+
         // create new client ro instance
         var caClient = HFCAClient.createNewInstance(
                 org1CaUrl,
@@ -237,17 +236,11 @@ public class FabricCAService {
      );
      // covert the certificate to Identities
      var adminIdentity = Identities.newX509Identity(
-             "Org1SMP",certificate,enrollment.getKey()
+             "Org1MSP",certificate,enrollment.getKey()
      );
      // take Identity to the wallet
      wallet.put("admin",adminIdentity);
      log.info("Successfully store the identity to the wallet !  ");
     }
-
-
-
-
-
-
 
 }
