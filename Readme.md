@@ -1,6 +1,7 @@
 
 ```
-## TO Start Project 
+## TO Start Project
+### np network create Chanel and also deploy the deploy the chainCode....
 ./network.sh up createChannel -ca && ./network.sh deployCC 
 ```
 
